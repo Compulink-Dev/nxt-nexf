@@ -88,21 +88,15 @@ export function Header() {
             href="/"
             className="group flex items-center gap-2 md:gap-3 transition-all duration-200"
           >
-            <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-green-50 to-green-100/50 p-2 group-hover:shadow-md transition-shadow">
+            <div className="relative rounded-lg overflow-hidden  p-2 group-hover:shadow-md transition-shadow">
               <Image
                 src="/necf-logo.png"
                 alt="NECF Logo"
-                width={48}
-                height={48}
+                width={100}
+                height={200}
                 className="w-auto h-auto"
                 priority
               />
-            </div>
-            <div className="hidden md:block">
-              <h1 className="text-sm md:text-base font-bold text-slate-900">NECF</h1>
-              <p className="text-xs text-slate-700 font-medium">
-                National Economic Consultative Forum
-              </p>
             </div>
           </Link>
         </div>
