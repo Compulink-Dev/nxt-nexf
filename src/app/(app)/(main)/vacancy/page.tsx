@@ -1,7 +1,7 @@
 //@ts-nocheck
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Briefcase,
@@ -267,6 +267,16 @@ function VacancyPage() {
   const [selectedExperience, setSelectedExperience] = useState('All')
   const [selectedJob, setSelectedJob] = useState<SelectedJob>(null)
   const [showFilters, setShowFilters] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const handleResize = () => setIsDesktop(window.innerWidth >= 1024)
+
+    handleResize() // set initial value
+    window.addEventListener('resize', handleResize)
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const filteredJobs = useMemo(
     () =>
@@ -395,7 +405,7 @@ function VacancyPage() {
 
             {/* Filters */}
             <AnimatePresence>
-              {(showFilters || window.innerWidth >= 1024) && (
+              {(showFilters || isDesktop) && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}

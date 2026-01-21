@@ -1,14 +1,14 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useTransition, Suspense } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import LoadingSkeleton from '@/components/loading-skeleton'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
-function ClientLayout({ children }: { children: React.ReactNode }) {
+function ClientLayoutContent({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(false)
   const pathname = usePathname()
-  const searchParams = useSearchParams()
+  const [isPending, startTransition] = useTransition()
 
   useEffect(() => {
     setIsLoading(true)
@@ -17,11 +17,11 @@ function ClientLayout({ children }: { children: React.ReactNode }) {
     }, 600)
 
     return () => clearTimeout(timer)
-  }, [pathname, searchParams])
+  }, [pathname])
 
   return (
     <AnimatePresence mode="wait">
-      {isLoading ? (
+      {isLoading || isPending ? (
         <LoadingSkeleton key="loading" />
       ) : (
         <main key="content" className="">
@@ -29,6 +29,14 @@ function ClientLayout({ children }: { children: React.ReactNode }) {
         </main>
       )}
     </AnimatePresence>
+  )
+}
+
+function ClientLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={<LoadingSkeleton />}>
+      <ClientLayoutContent>{children}</ClientLayoutContent>
+    </Suspense>
   )
 }
 
