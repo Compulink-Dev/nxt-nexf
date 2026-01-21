@@ -15,6 +15,7 @@ import { Sponsor } from './collections/Sponsor'
 import { Milestone } from './collections/Milestone'
 import { Testimonial } from './collections/Testimonial'
 import { Event } from './collections/Event'
+import { Vacancy } from './collections/Vacancy'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -26,7 +27,18 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Hero, Section, Service, Sponsor, Milestone, Testimonial, Event],
+  collections: [
+    Users,
+    Media,
+    Hero,
+    Section,
+    Service,
+    Sponsor,
+    Milestone,
+    Testimonial,
+    Event,
+    Vacancy,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

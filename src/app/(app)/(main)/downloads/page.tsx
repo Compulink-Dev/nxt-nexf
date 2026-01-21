@@ -205,7 +205,7 @@ function DownloadPage() {
                     onClick={() => setActiveCategory(category)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`px-3 py-1 rounded-lg font-medium transition-all duration-200 ${
                       activeCategory === category
                         ? 'bg-gradient-to-r from-green-600 to-green-700 text-white shadow-lg'
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'

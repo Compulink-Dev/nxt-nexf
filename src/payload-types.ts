@@ -76,6 +76,7 @@ export interface Config {
     milestones: Milestone;
     testimonials: Testimonial;
     events: Event;
+    vacancies: Vacancy;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -92,6 +93,7 @@ export interface Config {
     milestones: MilestonesSelect<false> | MilestonesSelect<true>;
     testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
+    vacancies: VacanciesSelect<false> | VacanciesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -311,6 +313,63 @@ export interface Event {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vacancies".
+ */
+export interface Vacancy {
+  id: string;
+  title: string;
+  department:
+    | 'Leadership'
+    | 'Research & Policy'
+    | 'Training & Development'
+    | 'Communications'
+    | 'Finance & Administration'
+    | 'Engagement';
+  type: 'Full-time' | 'Part-time' | 'Contract' | 'Internship';
+  experience: 'Entry-level (0-2 years)' | 'Mid-level (2-4 years)' | 'Senior (5+ years)';
+  location: string;
+  salary: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  responsibilities?:
+    | {
+        responsibility: string;
+        id?: string | null;
+      }[]
+    | null;
+  requirements?:
+    | {
+        requirement: string;
+        id?: string | null;
+      }[]
+    | null;
+  benefits?:
+    | {
+        benefit: string;
+        id?: string | null;
+      }[]
+    | null;
+  posted: string;
+  deadline: string;
+  status?: ('active' | 'closed' | 'draft') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -368,6 +427,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'events';
         value: string | Event;
+      } | null)
+    | ({
+        relationTo: 'vacancies';
+        value: string | Vacancy;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -564,6 +627,42 @@ export interface EventsSelect<T extends boolean = true> {
   maxAttendees?: T;
   status?: T;
   order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vacancies_select".
+ */
+export interface VacanciesSelect<T extends boolean = true> {
+  title?: T;
+  department?: T;
+  type?: T;
+  experience?: T;
+  location?: T;
+  salary?: T;
+  description?: T;
+  responsibilities?:
+    | T
+    | {
+        responsibility?: T;
+        id?: T;
+      };
+  requirements?:
+    | T
+    | {
+        requirement?: T;
+        id?: T;
+      };
+  benefits?:
+    | T
+    | {
+        benefit?: T;
+        id?: T;
+      };
+  posted?: T;
+  deadline?: T;
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

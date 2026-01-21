@@ -147,7 +147,7 @@ function ProgramsPage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white py-16 lg:py-24">
+      <section className="relative bg-gradient-to-b from-green-900 via-green-900 to-green-800 text-white py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -274,7 +274,7 @@ function ProgramsPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedProgram(null)}
-                className="w-full px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
+                className="w-full px-4 py-1.5 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
               >
                 Close
               </motion.button>
@@ -356,7 +356,7 @@ function ProgramsPage() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-4 py-2.5 mt-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                    className="w-full px-4 py-1.5 mt-4 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all flex items-center justify-center gap-2"
                   >
                     Learn More
                     <ArrowRight className="h-4 w-4" />
@@ -369,7 +369,7 @@ function ProgramsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-gradient-to-b from-slate-900 to-slate-950 text-white">
+      <section className="py-16 lg:py-24 bg-gradient-to-b from-green-900 to-green-950 text-white">
         <div className="container mx-auto px-4 lg:px-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -387,14 +387,14 @@ function ProgramsPage() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
+                className="px-4 py-1.5 bg-gradient-to-r from-green-600 to-green-700 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
               >
                 Participate
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 border border-green-500 text-white font-semibold rounded-lg hover:bg-green-500/10 transition-all"
+                className="px-4 py-1.5 border border-green-500 text-white font-semibold rounded-lg hover:bg-green-500/10 transition-all"
               >
                 Contact Us
               </motion.button>

@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Linkedin, Twitter, Phone, MapPin, Search, X, Users, Briefcase } from 'lucide-react'
 import Image from 'next/image'
+import { Input } from '@/components/ui/input'
 
 // Team members data
 const teamMembers = [
@@ -214,7 +215,7 @@ function TeamPage() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white py-16 lg:py-24">
+      <section className="relative bg-gradient-to-b from-green-900 via-green-900 to-green-800 text-slate-800 py-16 lg:py-24">
         <div className="container mx-auto px-4 lg:px-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -251,8 +252,8 @@ function TeamPage() {
           >
             {/* Search Bar */}
             <div className="relative max-w-md">
-              <Search className="absolute left-4 top-3.5 h-5 w-5 text-slate-400" />
-              <input
+              <Search className="absolute left-4 top-1.5 h-5 w-5 text-slate-400" />
+              <Input
                 type="text"
                 placeholder="Search team members..."
                 value={searchQuery}
@@ -336,17 +337,17 @@ function TeamPage() {
                       <p className="text-sm text-slate-600 line-clamp-2 flex-grow">{member.bio}</p>
 
                       {/* Contact Info */}
-                      <div className="pt-4 space-y-2 border-t border-slate-100">
+                      <div className="pt-4 space-y-2 border-t border-slate-100 text-slate-600">
                         <a
                           href={`mailto:${member.email}`}
-                          className="flex items-center gap-2 text-xs text-slate-600 hover:text-green-600 transition-colors"
+                          className="flex items-center gap-2 text-xs  hover:text-green-600 transition-colors"
                         >
                           <Mail className="h-4 w-4" />
                           <span className="truncate">{member.email}</span>
                         </a>
                         <a
                           href={`tel:${member.phone}`}
-                          className="flex items-center gap-2 text-xs text-slate-600 hover:text-green-600 transition-colors"
+                          className="flex items-center gap-2 text-xs  hover:text-green-600 transition-colors"
                         >
                           <Phone className="h-4 w-4" />
                           <span>{member.phone}</span>
@@ -354,12 +355,12 @@ function TeamPage() {
                       </div>
 
                       {/* Social Links */}
-                      <div className="flex gap-2 pt-2">
+                      <div className="flex gap-2 pt-2 text-slate-600">
                         {member.socials.linkedin && (
                           <motion.a
                             href={member.socials.linkedin}
                             whileHover={{ scale: 1.1 }}
-                            className="p-2 bg-slate-100 hover:bg-green-100 text-slate-600 hover:text-green-600 rounded-lg transition-all"
+                            className="p-2 bg-slate-100 hover:bg-green-100 hover:text-green-600 rounded-lg transition-all"
                           >
                             <Linkedin className="h-4 w-4" />
                           </motion.a>
@@ -368,7 +369,7 @@ function TeamPage() {
                           <motion.a
                             href={member.socials.twitter}
                             whileHover={{ scale: 1.1 }}
-                            className="p-2 bg-slate-100 hover:bg-green-100 text-slate-600 hover:text-green-600 rounded-lg transition-all"
+                            className="p-2 bg-slate-100 hover:bg-green-100 hover:text-green-600 rounded-lg transition-all"
                           >
                             <Twitter className="h-4 w-4" />
                           </motion.a>
@@ -504,7 +505,7 @@ function TeamPage() {
                                 href={member.socials.linkedin}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex items-center gap-2 px-4 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition-all font-semibold"
+                                className="flex items-center gap-2 px-4 py-3 bg-blue-50 text-blue-700! rounded-lg hover:bg-blue-100 transition-all font-semibold"
                               >
                                 <Linkedin className="h-5 w-5" />
                                 LinkedIn
@@ -515,7 +516,7 @@ function TeamPage() {
                                 href={member.socials.twitter}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="flex items-center gap-2 px-4 py-3 bg-sky-50 text-sky-700 rounded-lg hover:bg-sky-100 transition-all font-semibold"
+                                className="flex items-center gap-2 px-4 py-3 bg-sky-50 text-sky-700! rounded-lg hover:bg-sky-100 transition-all font-semibold"
                               >
                                 <Twitter className="h-5 w-5" />
                                 Twitter

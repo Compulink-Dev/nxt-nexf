@@ -21,7 +21,7 @@ function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="w-full bg-gradient-to-b from-green-400 via-green-600 to-green-800 text-green-300">
+    <footer className="w-full bg-gradient-to-b from-green-400 via-green-800 to-green-950 text-green-300">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 lg:px-6 py-16 lg:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -37,7 +37,7 @@ function Footer() {
                   className="w-full h-auto object-contain filter brightness-90"
                 />
               </div>
-              <p className="text-sm text-slate-400 font-medium leading-relaxed">
+              <p className="text-sm text-white font-medium leading-relaxed">
                 Together we make Zimbabwe Great
               </p>
             </div>
@@ -154,8 +154,8 @@ function Footer() {
                 <span className="text-sm font-medium group-hover:underline">+263 8612 701 094</span>
               </a>
               <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 flex-shrink-0 mt-0.5 text-slate-400" />
-                <p className="text-sm font-medium text-slate-400">
+                <MapPin className="h-5 w-5 flex-shrink-0 mt-0.5 text-white" />
+                <p className="text-sm font-medium text-white">
                   34 Elizabeth Windsor Road
                   <br />
                   Marlborough, Zimbabwe
@@ -166,10 +166,10 @@ function Footer() {
         </div>
 
         {/* Divider */}
-        <Separator className="my-12 bg-slate-700" />
+        <Separator className="my-12 bg-slate-400" />
 
         {/* Footer Bottom */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-slate-400">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-sm text-white">
           <div className="flex items-center gap-2">
             <span>© {currentYear} NECF —</span>
             <Link
