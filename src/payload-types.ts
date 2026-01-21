@@ -69,6 +69,13 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    hero: Hero;
+    sections: Section;
+    services: Service;
+    sponsors: Sponsor;
+    milestones: Milestone;
+    testimonials: Testimonial;
+    events: Event;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +85,13 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    hero: HeroSelect<false> | HeroSelect<true>;
+    sections: SectionsSelect<false> | SectionsSelect<true>;
+    services: ServicesSelect<false> | ServicesSelect<true>;
+    sponsors: SponsorsSelect<false> | SponsorsSelect<true>;
+    milestones: MilestonesSelect<false> | MilestonesSelect<true>;
+    testimonials: TestimonialsSelect<false> | TestimonialsSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -160,6 +174,143 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero".
+ */
+export interface Hero {
+  id: string;
+  title: string;
+  description: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  image: string | Media;
+  author?: string | null;
+  date?: string | null;
+  ctaText?: string | null;
+  ctaLink?: string | null;
+  status?: ('draft' | 'published') | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sections".
+ */
+export interface Section {
+  id: string;
+  title: string;
+  title2?: string | null;
+  image: string | Media;
+  order?: number | null;
+  status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services".
+ */
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  title2?: string | null;
+  description2?: string | null;
+  title3?: string | null;
+  description3?: string | null;
+  image: string | Media;
+  icon?: ('message-square' | 'users' | 'megaphone' | 'target' | 'lightbulb') | null;
+  order?: number | null;
+  status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsors".
+ */
+export interface Sponsor {
+  id: string;
+  name: string;
+  logo: string | Media;
+  website?: string | null;
+  tier?: ('platinum' | 'gold' | 'silver' | 'bronze' | 'partner') | null;
+  description?: string | null;
+  order?: number | null;
+  status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "milestones".
+ */
+export interface Milestone {
+  id: string;
+  title: string;
+  number: number;
+  suffix?: ('' | '+' | '%' | 'K' | 'M') | null;
+  icon?: ('target' | 'users' | 'award' | 'shield' | 'trending-up' | 'check-circle' | 'star' | 'trophy') | null;
+  description?: string | null;
+  order?: number | null;
+  status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials".
+ */
+export interface Testimonial {
+  id: string;
+  name: string;
+  company: string;
+  role: string;
+  content: string;
+  rating?: number | null;
+  image?: (string | null) | Media;
+  date?: string | null;
+  order?: number | null;
+  status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: string;
+  title: string;
+  description?: string | null;
+  image: string | Media;
+  date: string;
+  location?: string | null;
+  document?: (string | null) | Media;
+  link?: string | null;
+  registrationRequired?: boolean | null;
+  registrationFee?: number | null;
+  maxAttendees?: number | null;
+  status?: ('draft' | 'upcoming' | 'ongoing' | 'completed' | 'cancelled') | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -189,6 +340,34 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'hero';
+        value: string | Hero;
+      } | null)
+    | ({
+        relationTo: 'sections';
+        value: string | Section;
+      } | null)
+    | ({
+        relationTo: 'services';
+        value: string | Service;
+      } | null)
+    | ({
+        relationTo: 'sponsors';
+        value: string | Sponsor;
+      } | null)
+    | ({
+        relationTo: 'milestones';
+        value: string | Milestone;
+      } | null)
+    | ({
+        relationTo: 'testimonials';
+        value: string | Testimonial;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: string | Event;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -271,6 +450,122 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "hero_select".
+ */
+export interface HeroSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  content?: T;
+  image?: T;
+  author?: T;
+  date?: T;
+  ctaText?: T;
+  ctaLink?: T;
+  status?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sections_select".
+ */
+export interface SectionsSelect<T extends boolean = true> {
+  title?: T;
+  title2?: T;
+  image?: T;
+  order?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "services_select".
+ */
+export interface ServicesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  title2?: T;
+  description2?: T;
+  title3?: T;
+  description3?: T;
+  image?: T;
+  icon?: T;
+  order?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sponsors_select".
+ */
+export interface SponsorsSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  website?: T;
+  tier?: T;
+  description?: T;
+  order?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "milestones_select".
+ */
+export interface MilestonesSelect<T extends boolean = true> {
+  title?: T;
+  number?: T;
+  suffix?: T;
+  icon?: T;
+  description?: T;
+  order?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "testimonials_select".
+ */
+export interface TestimonialsSelect<T extends boolean = true> {
+  name?: T;
+  company?: T;
+  role?: T;
+  content?: T;
+  rating?: T;
+  image?: T;
+  date?: T;
+  order?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  image?: T;
+  date?: T;
+  location?: T;
+  document?: T;
+  link?: T;
+  registrationRequired?: T;
+  registrationFee?: T;
+  maxAttendees?: T;
+  status?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
